@@ -1,0 +1,4 @@
+requests
+tqdm
+BeautifulSoup4
+webdrivermanager

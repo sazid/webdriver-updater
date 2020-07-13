@@ -1,11 +1,8 @@
 # Author: Mohammed Sazid Al Rashid
 
-import os, sys
-import webdrivermanager
+import os
+import sys
 from pathlib import Path
-
-import webdrivermanager
-
 
 def update(pathname):
 	driver_download_path = Path(pathname) / Path("webdrivers")
@@ -25,8 +22,21 @@ def main():
 	PYTHON_DIR = os.path.dirname(sys.executable)
 	PYTHON_SCRIPTS_DIR = os.path.join(PYTHON_DIR,'Scripts')
 
+	print("Starting update. Drivers will be placed in the following directory:")
+	print("> %s\n" % PYTHON_SCRIPTS_DIR)
+
 	update(pathname=PYTHON_SCRIPTS_DIR)
+
+	print("\nUpdate complete. Press any key or [ENTER] to exit.")
+	input()
 
 
 if __name__ == '__main__':
-	main()
+	try:
+		import webdrivermanager
+		main()
+	except:
+		print("Could not find module webdrivermanager. Install by running command:")
+		print("> pip install webdrivermanager")
+		print("Press any key or [ENTER] to exit.")
+		input()
